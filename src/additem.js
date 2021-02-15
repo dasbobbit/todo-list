@@ -1,5 +1,7 @@
 import { addToItems } from './storeitems';
 
+console.log('additem script');
+
 const contentContainer = document.getElementById("content");
 // const mainContainer = document.getElementById("main");
 
@@ -50,6 +52,7 @@ submitItemButton.textContent = 'Submit';
 submitItemButton.addEventListener('click', (e) => {
     console.log(e);
     addToItems(projectInput.value, titleInput.value, descriptionInput.value, dateDueInput.value, pinInput.checked);
+    addItemModal.hidden = true;
 });
 // const cancelItem = document.createElement('button');
 
@@ -76,7 +79,9 @@ addItemForm.appendChild(r4);
 addItemForm.appendChild(r5);
 addItemForm.appendChild(submitItemButton);
 addItemModal.appendChild(addItemForm);
+
 const renderAddItemForm = () => {
+    addItemModal.hidden = false;
     main.appendChild(addItemModal);
 }
 

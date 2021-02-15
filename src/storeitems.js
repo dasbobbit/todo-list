@@ -2,8 +2,11 @@ import { compareAsc, format } from 'date-fns'
 //store new item
 
 //store project
+console.log('storeitems script');
 
-let itemsList = [];
+const projectsList = [];
+
+const itemsList = [];
 class Item {
     constructor(project, title, description, dateDue, pinned) {
         this.project = project;
@@ -21,10 +24,12 @@ const addToItems = (project, title, description, dateDue, pinned) => {
 }
 // let firstItem = new Item('new project');
 
-// const currentItems = () => {
-//     console.log(`current items on store items`);
-//     console.log(currentItems);
-//     return itemsList;
-// };
+const addInitialItems = () => {
+    itemsList.push(new Item("Work", "Week 6", "The weeks targets are going to be amazing. Hold on.", "2021-2-18", "false"));
+    itemsList.push(new Item("Sport", "Gym Routine", "I will work out at the gym for 10 minutes!", "2021-2-16", "false"));
+    projectsList.push("Work");
+    projectsList.push("Sport");
+}
 
-export { addToItems };
+
+export { addInitialItems, addToItems, itemsList, projectsList };
