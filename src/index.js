@@ -1,18 +1,19 @@
 import { pageLoad } from './pageload';
+import { renderItems, renderSideBar } from './displayitems';
+import addProject from './addproject';
 import { renderAddItemForm } from './additem'
 import { compareAsc, format } from 'date-fns'
-import { displayItems } from './displayitems';
-import { addInitialItems } from './storeitems';
 
-// const displayItems1 = () => {
+// const renderItems1 = () => {
 //     console.log(`current items`);
 //     // console.log(itemsList)
 // };
 // const main = document.getElementById("main");
 
-addInitialItems();
 pageLoad();
-displayItems();
+renderItems();
+renderSideBar();
+addProject();
 
 let dateNow = format(new Date(), 'yyyy-MM-dd');
 console.log(dateNow);
@@ -21,20 +22,23 @@ if (process.env.NODE_ENV !== 'production') {
     console.log('Looks like we are in development mode!');
 }
 
-const addItemButton = document.querySelector('#nav-add-item');
-addItemButton.addEventListener('click', () => {
-    console.log('clicked add item');
-    renderAddItemForm();
-    displayItems();
-});
+// const addItemBtn = document.querySelector('#add-item-btn');
+// addItemBtn.addEventListener('click', () => {
+//     console.log('clicked add item');
+//     renderAddItemForm();
+//     renderItems();
+// });
 
 const homeButton = document.querySelector('#nav-home');
 homeButton.addEventListener('click', () => {
     console.log('clicked home button');
-    displayItems();
+    renderItems();
 })
 
-// window.addEventListener('click', (e) => {
-//     console.log(this);
-//     console.log(e);
-// })
+// set up event listener for add project
+
+// set up new event listener for add item to project
+
+window.addEventListener('click', (e) => {
+    console.log(e);
+})

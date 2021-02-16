@@ -1,4 +1,4 @@
-import { addToItems } from './storeitems';
+import { addToItems } from './storage';
 
 console.log('additem script');
 
@@ -13,12 +13,6 @@ addItemForm.id = 'add-item-form';
 const heading = document.createElement('h1');
 heading.textContent = 'Add Items';
 let row = document.createElement('p');
-
-const projectInput = document.createElement('input');
-projectInput.id = 'project-input'
-const projectLabel = document.createElement('label');
-projectLabel.htmlFor = 'project-input';
-projectLabel.textContent = 'Project';
 
 const titleInput = document.createElement('input');
 titleInput.id = 'title-input'
@@ -49,21 +43,22 @@ pinLabel.textContent = 'pin';
 const submitItemButton = document.createElement('button');
 submitItemButton.type = 'button';
 submitItemButton.textContent = 'Submit';
+
+
+
 submitItemButton.addEventListener('click', (e) => {
-    console.log(e);
-    addToItems(projectInput.value, titleInput.value, descriptionInput.value, dateDueInput.value, pinInput.checked);
-    addItemModal.hidden = true;
+    let projectTitle = document.querySelector('#project-title');
+    console.log(projectTitle.textContent);
+    addToItems(projectTitle.textContent, titleInput.value, descriptionInput.value, dateDueInput.value, pinInput.checked);
+    addItemModal.style.display = "none";
+    // addItemModal.hidden = true;
 });
 // const cancelItem = document.createElement('button');
 
-// Generate rows for form 
-const r1 = document.createElement('p');
 const r2 = document.createElement('p');
 const r3 = document.createElement('p');
 const r4 = document.createElement('p');
 const r5 = document.createElement('p');
-r1.appendChild(projectLabel);
-r1.appendChild(projectInput);
 r2.appendChild(titleLabel);
 r2.appendChild(titleInput);
 r3.appendChild(descriptionLabel);
@@ -72,7 +67,6 @@ r4.appendChild(dateDueLabel);
 r4.appendChild(dateDueInput);
 r5.appendChild(pinLabel);
 r5.appendChild(pinInput);
-addItemForm.appendChild(r1);
 addItemForm.appendChild(r2);
 addItemForm.appendChild(r3);
 addItemForm.appendChild(r4);
@@ -81,7 +75,7 @@ addItemForm.appendChild(submitItemButton);
 addItemModal.appendChild(addItemForm);
 
 const renderAddItemForm = () => {
-    addItemModal.hidden = false;
+    addItemModal.style.display = "block";
     main.appendChild(addItemModal);
 }
 
