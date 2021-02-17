@@ -1,7 +1,7 @@
 import { pageLoad } from './pageload';
 import { renderItems, renderSideBar } from './displayitems';
 import addProject from './addproject';
-import { renderAddItemForm } from './additem'
+import { openItemModal } from './additem'
 import { compareAsc, format } from 'date-fns'
 
 // const renderItems1 = () => {
@@ -25,20 +25,20 @@ if (process.env.NODE_ENV !== 'production') {
 // const addItemBtn = document.querySelector('#add-item-btn');
 // addItemBtn.addEventListener('click', () => {
 //     console.log('clicked add item');
-//     renderAddItemForm();
+//     openItemModal();
 //     renderItems();
 // });
 
-const homeButton = document.querySelector('#nav-home');
-homeButton.addEventListener('click', () => {
-    console.log('clicked home button');
-    renderItems();
-})
+// const homeButton = document.querySelector('#nav-home');
+// homeButton.addEventListener('click', () => {
+//     console.log('clicked home button');
+//     renderItems();
+// })
 
 // set up event listener for add project
 
 // set up new event listener for add item to project
 
-window.addEventListener('click', (e) => {
-    console.log(e);
+document.addEventListener('click', (e) => {
+    // console.log(e);
 })

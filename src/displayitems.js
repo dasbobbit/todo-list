@@ -1,6 +1,6 @@
 // import { LibManifestPlugin } from 'webpack';
 import { itemsList, projectsList } from './storage';
-import { renderAddItemForm } from './additem';
+import { openItemModal } from './additem';
 
 console.log('renderItems script');
 const projectNav = document.createElement('div');
@@ -63,7 +63,7 @@ const renderNewItemBtn = () => {
     
     addItemBtn.addEventListener('click', () => {
         console.log('clicked add item');
-        renderAddItemForm();
+        openItemModal();
 
     });
 }

@@ -44,15 +44,51 @@ const submitItemButton = document.createElement('button');
 submitItemButton.type = 'button';
 submitItemButton.textContent = 'Submit';
 
+const setCancelItemListener = () => {
 
+    window.onclick = function (event) {
+        console.log(addItemModal);
+        console.log(event.target);
+        if (event.target == addItemModal) {
+            addItemModal.style.display = "none";
+        }
+    }
 
-submitItemButton.addEventListener('click', (e) => {
-    let projectTitle = document.querySelector('#project-title');
-    console.log(projectTitle.textContent);
-    addToItems(projectTitle.textContent, titleInput.value, descriptionInput.value, dateDueInput.value, pinInput.checked);
+    // window.addEventListener('click', (e) => {
+    //     console.log(addItemModal);
+    //     let isClickInModal = addItemModal.contains(e.target);
+
+    //     if (!isClickInModal) {
+    //         // closeItemModal();
+    //     }
+
+    //     console.log(isClickInModal);
+    // });
+};
+
+const setSubmitItemListener = () => {
+    submitItemButton.addEventListener('click', (e) => {
+        let projectTitle = document.querySelector('#project-title');
+        console.log(projectTitle.textContent);
+        addToItems(projectTitle.textContent, titleInput.value, descriptionInput.value, dateDueInput.value, pinInput.checked);
+        closeItemModal();
+        // addItemModal.hidden = true;
+    })
+
+};
+
+const openItemModal = () => {
+    setCancelItemListener();
+    main.appendChild(addItemModal);
+    setSubmitItemListener();
+    addItemModal.style.display = "block";
+};
+
+const closeItemModal = () => {
+
     addItemModal.style.display = "none";
-    // addItemModal.hidden = true;
-});
+
+}
 // const cancelItem = document.createElement('button');
 
 const r2 = document.createElement('p');
@@ -73,10 +109,15 @@ addItemForm.appendChild(r4);
 addItemForm.appendChild(r5);
 addItemForm.appendChild(submitItemButton);
 addItemModal.appendChild(addItemForm);
+// main.appendChild(addItemModal);
 
-const renderAddItemForm = () => {
-    addItemModal.style.display = "block";
-    main.appendChild(addItemModal);
+const renderAddItemModal = () => {
+
+
+    openItemModal();
+
+    setSubmitItemListener();
+    setCancelItemListener();
 }
 
-export { renderAddItemForm }
+export { openItemModal }
