@@ -1,5 +1,7 @@
+
+
 html {
-    background-color: rgb(182, 182, 182);
+    background-color: #202124;
 }
 
 /* The sidebar menu */
@@ -30,19 +32,54 @@ html {
     color: #f1f1f1;
 }
 
+#project-title {
+    color: #c0c0c0;
+    font-size: 30px;
+}
+
 #items-div {
-    
     display: flex;
     flex-wrap: wrap;
     justify-content: flex-start;
+
+    margin: 0 auto;
 }
 
 .item-div {
-    background-color: beige;
-    /* padding: 5px; */
+    display: flex;
+    flex-direction: column;
+    color: #c0c0c0;
+    border: 1px solid #c0c0c0;
+    padding: 0 10px;
     margin: 1rem 1rem 0 0;
-    flex: 0 1 23%;
+    width: 200px;
+    border-radius: 7px;
+    overflow: overlay;
 }
+
+.item-div h3 {
+    font-size: 20px;
+    font-weight: bolder;
+    margin-bottom: 0;
+}
+.item-div p {
+    font-size: 16px;
+    font-weight: light;
+    /* padding: 5px; */
+}
+.due-date {
+    margin-top: auto;
+    /* align-self: flex-end; */
+}
+#add-item-btn {
+    /* border: none; */
+    cursor: pointer;
+    font-size: 60px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
 
 /* Style page content */
 #main {
@@ -63,16 +100,69 @@ html {
 }
 
 #add-item-modal {
-    background-color: rgb(219, 219, 150);
-    width: 500px;
-    display: none;
-    position: fixed;
-    z-index: 1;
-    margin: 50px auto;
-    border-radius: 10px;
+    display: none; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    z-index: 1; /* Sit on top */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
     overflow: auto; /* Enable scroll if needed */
+    /* opacity: .75; */
+    /* background-color: #202124;  */
+}
 
-    left: 0%;
-    right: 0%;
-    box-shadow: 2px 2px 2px  rgba(0, 0, 0, 0.678);
+#add-item-modal-content {
+    color: #fefefe;
+    background-color: #202124;
+    border-radius: 10px;
+    margin: 8em auto; /* 15% from the top and centered */
+    padding: 0 20px 20px 20px;
+    border: 1px solid #888;
+    width: 80%;
+    max-width: 600px;
+    box-shadow: 0 1px 3px 0 rgba(0,0,0,0.6);
+}
+
+.textarea {
+    font-size: 20px;
+    display: block;
+    width: 100%;
+    /* overflow: hidden; */
+    resize: both;
+    padding: 7px;
+    min-height: 40px;
+    line-height: 20px;
+    cursor: text;
+    outline: none;
+}
+
+/* textarea:focus{
+
+} */
+
+#title-input:empty::before {
+    content: "Title";
+    color: gray;
+    
+}
+
+#description-input:empty::before {
+    content: "Take a note...";
+    color: gray;
+}
+
+#date-due-button {
+    cursor: pointer;
+}
+
+#date-due-input {
+    background-color: rgba(0, 0, 0, 0);
+    color: #fefefe;
+    border-style: hidden;
+    /* background-color: #eee; */
+}
+
+#date-due-input label:hover {
+    cursor: pointer;
 }

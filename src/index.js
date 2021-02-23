@@ -1,17 +1,17 @@
 import { pageLoad } from './pageload';
-import { renderItems, renderSideBar } from './displayitems';
+import { renderAllItems, renderSideBar } from './displayitems';
 import addProject from './addproject';
 import { openItemModal } from './additem'
 import { compareAsc, format } from 'date-fns'
 
-// const renderItems1 = () => {
+// const renderAllItems1 = () => {
 //     console.log(`current items`);
 //     // console.log(itemsList)
 // };
 // const main = document.getElementById("main");
 
 pageLoad();
-renderItems();
+renderAllItems();
 renderSideBar();
 addProject();
 
@@ -26,13 +26,13 @@ if (process.env.NODE_ENV !== 'production') {
 // addItemBtn.addEventListener('click', () => {
 //     console.log('clicked add item');
 //     openItemModal();
-//     renderItems();
+//     renderAllItems();
 // });
 
 // const homeButton = document.querySelector('#nav-home');
 // homeButton.addEventListener('click', () => {
 //     console.log('clicked home button');
-//     renderItems();
+//     renderAllItems();
 // })
 
 // set up event listener for add project

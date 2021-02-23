@@ -16,7 +16,7 @@ const addProject = () => {
 
     addProjectBtn.addEventListener('blur', () => {
 
-        if (addProjectBtn.textContent == '') {
+        if (addProjectBtn.textContent.trim() == '') {
             addProjectBtn.textContent = '+';
         } else {
             addToProjects(addProjectBtn.textContent);

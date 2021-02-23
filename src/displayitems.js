@@ -2,7 +2,7 @@
 import { itemsList, projectsList } from './storage';
 import { openItemModal } from './additem';
 
-console.log('renderItems script');
+console.log('renderAllItems script');
 const projectNav = document.createElement('div');
 projectNav.id = 'project-nav';
 const projectsDiv = document.createElement('div');
@@ -29,7 +29,7 @@ const renderSideBar = () => {
 
     let allProjectsButton = document.createElement('a');
     allProjectsButton.className = 'project-item';
-    allProjectsButton.textContent = 'All Projects';
+    allProjectsButton.textContent = 'All Cards';
     projectNav.appendChild(allProjectsButton);
 
     for (let i = 0; i < projectsList.length; i++) {
@@ -60,7 +60,7 @@ const renderNewItemBtn = () => {
     addItemBtn.textContent = '+';
     itemsDiv.appendChild(addItemBtn);
     main.appendChild(itemsDiv);
-    
+
     addItemBtn.addEventListener('click', () => {
         console.log('clicked add item');
         openItemModal();
@@ -73,16 +73,23 @@ const renderProjectItems = (e) => {
 
     // Make sure the Project name is atop
     let projectTitle = document.querySelector('#project-title');
-    
-    projectTitle.textContent = `${e.target.textContent}`; 
-    
-    renderNewItemBtn();
 
+    console.log(e);
+
+    if (e == undefined) {
+        projectTitle.textContent = projectTitle.textContent
+    } else {
+        projectTitle.textContent = `${e.target.textContent}`;
+
+    }
+
+    
     for (let i = 0; i < itemsList.length; i++) {
-        if (e.target.textContent == itemsList[i].project) {
+        if (projectTitle.textContent == itemsList[i].project) {
             let title = document.createElement('h3');
             let description = document.createElement('p');
             let dateDue = document.createElement('p');
+            dateDue.class = 'due-date';
             title.textContent = `${itemsList[i].title}`;
             description.textContent = `${itemsList[i].description}`;
             dateDue.textContent = `Due: ${itemsList[i].dateDue}`;
@@ -92,31 +99,39 @@ const renderProjectItems = (e) => {
             
             itemDiv.appendChild(title);
             itemDiv.appendChild(description);
-            itemDiv.appendChild(dateDue);
+            // Only append date due if there exists one
+            console.log(itemsList[i].dateDue)
+            if (itemsList[i].dateDue !== '') {
+                itemDiv.appendChild(dateDue);
+            }
             itemsDiv.appendChild(itemDiv);
         }
     }
-    if (projectsList.includes(e.target.textContent) == false) renderItems();
+    renderNewItemBtn();
+    if (projectsList.includes(projectTitle.textContent) == false) renderAllItems();
 }
 
 const renderHeader = () => {
 
 };
 
-const renderItems = () => {
+const renderAllItems = () => {
     removeItems();
     // renderHeader();
-    
-    renderNewItemBtn();
-    
+
+    // renderNewItemBtn();
+
     for (let i = 0; i < itemsList.length; i++) {
+
+        
+
         let title = document.createElement('h3');
         let description = document.createElement('p');
         let dateDue = document.createElement('p');
         title.textContent = `${itemsList[i].title}`;
         description.textContent = `${itemsList[i].description}`;
         dateDue.textContent = `Due: ${itemsList[i].dateDue}`;
-        
+
         let itemDiv = document.createElement('div');
         itemDiv.className = 'item-div';
 
@@ -126,8 +141,8 @@ const renderItems = () => {
         itemsDiv.appendChild(itemDiv);
     }
 
-    
+
     main.appendChild(itemsDiv);
 };
 
-export { renderItems, renderSideBar }
+export { renderAllItems, renderSideBar, renderProjectItems }
