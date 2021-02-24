@@ -1,24 +1,20 @@
-import { addToItems } from './storage';
+import { addToItems, itemsList } from './storage';
 import { renderProjectItems } from './displayitems';
-
-console.log('additem script');
 
 const contentContainer = document.getElementById("content");
 // const mainContainer = document.getElementById("main");
 
 const addItemModal = document.createElement('div');
-addItemModal.id = 'add-item-modal';
+addItemModal.className = 'item-modal';
 
 const addItemModalContent = document.createElement('div');
-addItemModalContent.id = 'add-item-modal-content';
+addItemModalContent.className = 'item-modal-content';
 
 const addItemForm = document.createElement('form');
-addItemForm.id = 'add-item-form';
+addItemForm.className = 'item-form';
 addItemForm.onsubmit = 'return false';
 
-const heading = document.createElement('h1');
-heading.textContent = 'Add Items';
-let row = document.createElement('p');
+
 
 const titleInput = document.createElement('span');
 titleInput.id = 'title-input'
@@ -64,20 +60,20 @@ const submitItemButton = document.createElement('input');
 submitItemButton.type = 'button';
 submitItemButton.value = 'Submit';
 
-const r2 = document.createElement('p');
-const r3 = document.createElement('p');
-const r4 = document.createElement('p');
+
+
+const r4 = document.createElement('div');
 const r5 = document.createElement('p');
 // r2.appendChild(titleLabel);
-r2.appendChild(titleInput);
+
 // r3.appendChild(descriptionLabel);
-r3.appendChild(descriptionInput);
+
 r4.appendChild(dateDueBtn);
 r4.appendChild(dateDueInput);
 r5.appendChild(pinLabel);
 r5.appendChild(pinInput);
-addItemForm.appendChild(r2);
-addItemForm.appendChild(r3);
+addItemForm.appendChild(titleInput);
+addItemForm.appendChild(descriptionInput);
 addItemForm.appendChild(r4);
 addItemForm.appendChild(r5);
 addItemForm.appendChild(submitItemButton);
@@ -97,12 +93,18 @@ const setCancelItemListener = () => {
 
 const setSubmitItemListener = () => {
     submitItemButton.addEventListener('click', (e) => {
+        let projectTitle = document.querySelector('#project-title');
+        console.log(itemsList.some(e => e.title === titleInput.textContent.trim()));
+        console.log(projectTitle.textContent);
+        console.log(itemsList);
+        console.log(itemsList.some(e => e.project === projectTitle.textContent));
         // Error check
-        if (titleInput.textContent.trim() == '' || descriptionInput.textContent.trim() == '') {
+        if (titleInput.textContent.trim() == '') {
             console.log(titleInput);
             console.log(descriptionInput);
+        } else if (itemsList.some(e => e.title === titleInput.textContent.trim() && itemsList.some(e => e.project === projectTitle.textContent))) {
+            alert(`title already taken`)
         } else {
-            let projectTitle = document.querySelector('#project-title');
             addToItems(projectTitle.textContent, titleInput.textContent, descriptionInput.textContent, dateDueInput.value, pinInput.checked);
 
             closeItemModal();

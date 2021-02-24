@@ -1,8 +1,9 @@
 // import { LibManifestPlugin } from 'webpack';
 import { itemsList, projectsList } from './storage';
 import { openItemModal } from './additem';
+import addProject from './addproject';
+import { renderEditModal } from './edititem';
 
-console.log('renderAllItems script');
 const projectNav = document.createElement('div');
 projectNav.id = 'project-nav';
 const projectsDiv = document.createElement('div');
@@ -11,7 +12,6 @@ itemsDiv.id = 'items-div';
 
 const removeSideBar = () => {
     while (projectNav.lastElementChild) {
-        console.log(`attempting to remove child`);
         projectNav.removeChild(projectNav.lastElementChild);
     }
 };
@@ -19,7 +19,6 @@ const removeSideBar = () => {
 const removeItems = () => {
     // const main = document.querySelector('#main');
     while (itemsDiv.lastElementChild) {
-        console.log(`attempting to remove child`);
         itemsDiv.removeChild(itemsDiv.lastElementChild);
     }
 };
@@ -33,7 +32,7 @@ const renderSideBar = () => {
     projectNav.appendChild(allProjectsButton);
 
     for (let i = 0; i < projectsList.length; i++) {
-        console.log('renderSideBarIn');
+        // console.log('renderSideBarIn');
         let projectItem = document.createElement('a');
         projectItem.className = 'project-item';
         projectItem.textContent = `${projectsList[i]}`;
@@ -47,10 +46,11 @@ const renderSideBar = () => {
     main.appendChild(projectNav);
 
     let projectItems = document.querySelectorAll('.project-item');
-    console.log(projectItems);
+    // console.log(projectItems);
     projectItems.forEach(item => {
         item.addEventListener('click', renderProjectItems);
     });
+    addProject();
 };
 
 const renderNewItemBtn = () => {
@@ -105,6 +105,9 @@ const renderProjectItems = (e) => {
                 itemDiv.appendChild(dateDue);
             }
             itemsDiv.appendChild(itemDiv);
+            itemDiv.addEventListener('click', (e) => {
+                renderEditModal(itemDiv.firstElementChild.textContent);
+            })
         }
     }
     renderNewItemBtn();
@@ -137,7 +140,9 @@ const renderAllItems = () => {
 
         itemDiv.appendChild(title);
         itemDiv.appendChild(description);
-        itemDiv.appendChild(dateDue);
+        if (itemsList[i].dateDue !== '') {
+            itemDiv.appendChild(dateDue);
+        }
         itemsDiv.appendChild(itemDiv);
     }
 

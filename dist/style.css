@@ -99,7 +99,7 @@ html {
     #project-nav a {font-size: 18px;}
 }
 
-#add-item-modal {
+.item-modal {
     display: none; /* Hidden by default */
     position: fixed; /* Stay in place */
     z-index: 1; /* Sit on top */
@@ -112,7 +112,7 @@ html {
     /* background-color: #202124;  */
 }
 
-#add-item-modal-content {
+.item-modal-content {
     color: #fefefe;
     background-color: #202124;
     border-radius: 10px;

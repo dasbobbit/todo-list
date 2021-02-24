@@ -13,18 +13,17 @@ class Item {
     }
 }
 //store project
-console.log('storeitems script');
 
 let projectsList = [];
 
 let itemsList = [];
 
 window.onload = function() {
-    console.log(JSON.parse(localStorage.getItem("projectsList")));
+
     if (JSON.parse(localStorage.getItem("projectsList")) != null) {
         projectsList = JSON.parse(localStorage.getItem("projectsList"));
     }
-    console.log(JSON.parse(localStorage.getItem("itemsList")));
+
     if (JSON.parse(localStorage.getItem("itemsList")) != null) {
         itemsList = JSON.parse(localStorage.getItem("itemsList"));
     }
@@ -40,8 +39,6 @@ const addToItems = (project, title, description, dateDue, pinned) => {
     } else {
         localStorage.setItem("itemsList", JSON.stringify(itemsList));
     }
-
-    console.log(itemsList);
 }
 
 const addToProjects = (project) => {
@@ -53,7 +50,6 @@ const addToProjects = (project) => {
         localStorage.setItem("projectsList", JSON.stringify(projectsList));
     }
 
-    console.log(projectsList);
 }
 
 

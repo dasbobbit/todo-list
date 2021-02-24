@@ -1,7 +1,5 @@
 import { itemsList, projectsList } from './storage';
 
-console.log('pageload script');
-
 const contentContainer = document.getElementById("content");
 
 const header = document.createElement('header');

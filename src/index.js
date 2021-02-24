@@ -40,5 +40,5 @@ if (process.env.NODE_ENV !== 'production') {
 // set up new event listener for add item to project
 
 document.addEventListener('click', (e) => {
-    // console.log(e);
+    console.log(e);
 })
