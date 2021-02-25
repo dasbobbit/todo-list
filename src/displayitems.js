@@ -100,7 +100,7 @@ const renderProjectItems = (e) => {
             itemDiv.appendChild(title);
             itemDiv.appendChild(description);
             // Only append date due if there exists one
-            console.log(itemsList[i].dateDue)
+
             if (itemsList[i].dateDue !== '') {
                 itemDiv.appendChild(dateDue);
             }
@@ -143,6 +143,9 @@ const renderAllItems = () => {
         if (itemsList[i].dateDue !== '') {
             itemDiv.appendChild(dateDue);
         }
+        // itemDiv.addEventListener('click', (e) => {
+        //     renderEditModal(itemDiv.firstElementChild.textContent);
+        // })
         itemsDiv.appendChild(itemDiv);
     }
 

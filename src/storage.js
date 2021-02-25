@@ -18,7 +18,7 @@ let projectsList = [];
 
 let itemsList = [];
 
-window.onload = function() {
+window.onload = function () {
 
     if (JSON.parse(localStorage.getItem("projectsList")) != null) {
         projectsList = JSON.parse(localStorage.getItem("projectsList"));
@@ -33,26 +33,40 @@ window.onload = function() {
 
 const addToItems = (project, title, description, dateDue, pinned) => {
     itemsList.push(new Item(project, title, description, dateDue, pinned));
+    updateStorage();
+}
 
+const editItem = (index, title, description, dateDue, pinned) => {
+    itemsList[index].title = title;
+    itemsList[index].description = description;
+    itemsList[index].dateDue = dateDue;
+    itemsList[index].pinned = pinned;
+    updateStorage();
+}
+
+const deleteItem = (index) => {
+    itemsList.splice(index, 1);
+    updateStorage();
+}
+
+const addToProjects = (project) => {
+    projectsList.push(project);
+    updateStorage();
+}
+
+function updateStorage() {
     if (localStorage.getItem("itemsList") == null) {
         localStorage.setItem("itemsList", JSON.stringify(itemsList));
     } else {
         localStorage.setItem("itemsList", JSON.stringify(itemsList));
     }
-}
-
-const addToProjects = (project) => {
-    projectsList.push(project);
 
     if (localStorage.getItem("projectsList") == null) {
         localStorage.setItem("projectsList", JSON.stringify(projectsList));
     } else {
         localStorage.setItem("projectsList", JSON.stringify(projectsList));
     }
-
 }
-
-
 
 
 projectsList.push("Work");
@@ -62,18 +76,5 @@ itemsList.push(new Item("Sport", "Gym Routine", "I will work out at the gym for 
 itemsList.push(new Item("Work", "Week 7", "The weeks targets are going to be better than week 6's. Let's do it.", "2021-2-25", "false"));
 itemsList.push(new Item("Sport", "Sports on TV", "Need to watch the footy tonight!", "2021-2-18", "false"));
 
-// const addToItems = (project, title, description, dateDue, pinned) => {
-//     itemsList.push(new Item(project, title, description, dateDue, pinned));
-//     console.log(itemsList);
-// }
 
-// const addToProjects = (project) => {
-//     projectsList.push(project);
-//     console.log(projectsList);
-// }
-
-// let firstItem = new Item('new project');
-
-
-
-export { addToItems, addToProjects, itemsList, projectsList };
+export { addToItems, addToProjects, editItem, deleteItem, itemsList, projectsList };

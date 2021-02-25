@@ -57,6 +57,11 @@ html {
     overflow: overlay;
 }
 
+.item-div:hover {
+    cursor: pointer;
+    transform: scale(1.05);
+}
+
 .item-div h3 {
     font-size: 20px;
     font-weight: bolder;
