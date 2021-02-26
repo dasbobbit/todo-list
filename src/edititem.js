@@ -116,10 +116,11 @@ const setDeleteItemListener = () => {
 
 const setSubmitItemListener = () => {
     submitItemButton.addEventListener('click', (e) => {
-
+        let titleInput = document.querySelector('#title-input')
+        console.log(titleInput);
         // Error check
-        if (titleInput.textContent.trim() == '') {
-            alert(`Needs a title`);
+        if (titleInput.textContent == '') {
+            console.log(`Needs a title`);
         } else {
             editItem(itemIndex, titleInput.textContent, descriptionInput.textContent, dateDueInput.value)
             closeItemModal();
@@ -144,15 +145,6 @@ const closeItemModal = () => {
 
     // Hide modal
     editItemModal.style.display = "none";
-}
-
-const rendereditItemModal = () => {
-
-
-    openItemModal();
-
-    setSubmitItemListener();
-    setCancelItemListener();
 }
 
 export { renderEditModal }

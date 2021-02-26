@@ -17,7 +17,7 @@ const renderNavBarItems = () => {
 
     let projectTitle = document.createElement('a');
     projectTitle.id = 'project-title';
-    projectTitle.textContent = 'All Project Cards';
+    projectTitle.textContent = 'All Cards';
     header.appendChild(projectTitle);
 }
 

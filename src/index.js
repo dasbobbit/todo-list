@@ -1,6 +1,7 @@
 import { pageLoad } from './pageload';
 import { renderAllItems, renderSideBar } from './displayitems';
 import addProject from './addproject';
+import editProjectListener from './editproject';
 import { openItemModal } from './additem'
 import { compareAsc, format } from 'date-fns'
 
@@ -14,6 +15,7 @@ pageLoad();
 renderAllItems();
 renderSideBar();
 addProject();
+editProjectListener();
 
 let dateNow = format(new Date(), 'yyyy-MM-dd');
 console.log(dateNow);

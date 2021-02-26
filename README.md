@@ -1,9 +1,9 @@
-This is my take on a restaurant page for The Odin Project.
+This is my take on a to do list for The Odin Project.
 
-Technologies used:
+Demonstrating use of:
 - HTML
 - CSS
 - JavaScript
 - Webpack
 
-Take a look here: [Live Demo](https://dasbobbit.github.io/restaurant_page/)
+Take a look here: [Live Demo](https://dasbobbit.github.io/todo-list/)

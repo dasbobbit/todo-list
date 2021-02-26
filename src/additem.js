@@ -70,8 +70,8 @@ const r5 = document.createElement('p');
 
 r4.appendChild(dateDueBtn);
 r4.appendChild(dateDueInput);
-r5.appendChild(pinLabel);
-r5.appendChild(pinInput);
+// r5.appendChild(pinLabel);
+// r5.appendChild(pinInput);
 addItemForm.appendChild(titleInput);
 addItemForm.appendChild(descriptionInput);
 addItemForm.appendChild(r4);

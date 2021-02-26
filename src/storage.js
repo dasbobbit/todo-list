@@ -54,6 +54,30 @@ const addToProjects = (project) => {
     updateStorage();
 }
 
+const editProject = (oldProjectName, newProjectName) => {
+    // Update project name in projectList
+    for (let i = 0; i < projectsList.length; i++) {
+        if (projectsList[i] == oldProjectName) {
+            projectsList[i] = newProjectName;
+        }
+    }
+
+    // Edit project associated with relevant item in item list
+    for (let i = 0; i < itemsList.length; i++) {
+        if (itemsList[i].project == oldProjectName) {
+            itemsList[i].project = newProjectName;
+        }
+    }
+    console.log(projectsList)
+    console.log(itemsList);
+
+    updateStorage();
+}
+
+const deleteProject = (project) => {
+    
+}
+
 function updateStorage() {
     if (localStorage.getItem("itemsList") == null) {
         localStorage.setItem("itemsList", JSON.stringify(itemsList));
@@ -77,4 +101,4 @@ itemsList.push(new Item("Work", "Week 7", "The weeks targets are going to be bet
 itemsList.push(new Item("Sport", "Sports on TV", "Need to watch the footy tonight!", "2021-2-18", "false"));
 
 
-export { addToItems, addToProjects, editItem, deleteItem, itemsList, projectsList };
+export { addToItems, addToProjects, editItem, deleteItem, editProject, deleteProject, itemsList, projectsList };
