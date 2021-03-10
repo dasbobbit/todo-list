@@ -6,4 +6,4 @@ Demonstrating use of:
 - JavaScript
 - Webpack
 
-Take a look here: [Live Demo](https://dasbobbit.github.io/todo-list/)
+Take a look here: [Live Demo](https://dasbobbit.github.io/todo-list/dist/index.html)
