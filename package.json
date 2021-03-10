@@ -23,5 +23,5 @@
   "bugs": {
     "url": "https://github.com/dasbobbit/todo-list/issues"
   },
-  "homepage": "https://github.com/dasbobbit/todo-list/"
+  "homepage": "https://github.com/dasbobbit/todo-list/dist/index.html"
 }
